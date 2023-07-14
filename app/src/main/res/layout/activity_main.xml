@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textSpeech"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World! Enter the text below to speak"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:id="@+id/textWritten"
+        android:hint="Enter text"
+        app:layout_constraintTop_toBottomOf="@+id/textSpeech"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:id="@+id/speakBtn"
+        android:text="Press to speak the entered text"
+        app:layout_constraintTop_toBottomOf="@+id/textWritten"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
