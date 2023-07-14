@@ -18,11 +18,29 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         setContentView(binding?.root)
         tts = TextToSpeech(this, this)
         binding?.speakBtn?.setOnClickListener {
-            Toast.makeText(this,"Enter the text to speak",Toast.LENGTH_SHORT).show()
+            if (binding?.textWritten?.text!!.isEmpty()) {
+                Toast.makeText(this, "Enter the text to speak", Toast.LENGTH_SHORT).show()
+            }else{
+                //SPEAK THE TEXT PLEASE
+                speakOut(binding?.textWritten?.text.toString())
+            }
         }
     }
 
     override fun onInit(p0: Int) {
 
+    }
+
+    private fun speakOut(text : String){
+        tts?.speak(text,TextToSpeech.QUEUE_FLUSH,null,"")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (tts!=null){
+            tts?.stop()
+            tts?.shutdown()
+        }
+        binding = null
     }
 }
