@@ -3,8 +3,10 @@ package com.example.texttospeech
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
+import android.util.Log
 import android.widget.Toast
 import com.example.texttospeech.databinding.ActivityMainBinding
+import java.util.*
 
 class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
@@ -27,8 +29,15 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
     }
 
-    override fun onInit(p0: Int) {
-
+    override fun onInit(status: Int) {
+        if (status == TextToSpeech.SUCCESS){
+            val result = tts!!.setLanguage(Locale.ENGLISH)
+        }
+        if (status == TextToSpeech.LANG_MISSING_DATA || status == TextToSpeech.LANG_NOT_SUPPORTED){
+            Log.e("TTS","Language not supported")
+        }else{
+            Log.e("TTS","Initialization failed")
+        }
     }
 
     private fun speakOut(text : String){
